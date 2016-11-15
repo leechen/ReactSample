@@ -49,7 +49,7 @@ const App = React.createClass({
         <div>
             <h1>Lighthouse</h1>
             <ul className="header">
-                <li><IndexLink to="/" activeClassName="active">Home</Link></li>
+                <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
                 <li><Link to="/Configuration" activeClassName="active">Configuration</Link></li>
                 <li><Link to="/Result" activeClassName="active">Result</Link></li>
             </ul>

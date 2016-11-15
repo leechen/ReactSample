@@ -72,12 +72,7 @@
 	        _react2.default.createElement(
 	            "p",
 	            null,
-	            "Cras facilisis urna ornare ex volutpat, et convallis erat elementum. Ut aliquam, ipsum vitae gravida suscipit, metus dui bibendum est, eget rhoncus nibh metus nec massa. Maecenas hendrerit laoreet augue nec molestie. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
-	        ),
-	        _react2.default.createElement(
-	            "p",
-	            null,
-	            "Duis a turpis sed lacus dapibus elementum sed eu lectus."
+	            "Home stuff"
 	        )
 	    );
 	};
@@ -141,8 +136,8 @@
 	                    "li",
 	                    null,
 	                    _react2.default.createElement(
-	                        _reactRouter.Link,
-	                        { to: "/" },
+	                        _reactRouter.IndexLink,
+	                        { to: "/", activeClassName: "active" },
 	                        "Home"
 	                    )
 	                ),
@@ -151,7 +146,7 @@
 	                    null,
 	                    _react2.default.createElement(
 	                        _reactRouter.Link,
-	                        { to: "/Configuration" },
+	                        { to: "/Configuration", activeClassName: "active" },
 	                        "Configuration"
 	                    )
 	                ),
@@ -160,7 +155,7 @@
 	                    null,
 	                    _react2.default.createElement(
 	                        _reactRouter.Link,
-	                        { to: "/Result" },
+	                        { to: "/Result", activeClassName: "active" },
 	                        "Result"
 	                    )
 	                )
