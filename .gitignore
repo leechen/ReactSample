@@ -190,7 +190,8 @@ ClientBin/
 *.dbproj.schemaview
 *.pfx
 *.publishsettings
-Web.Ui/node_modules/
+Web.UI/node_modules/
+packages/
 orleans.codegen.cs
 
 # Since there are multiple workflows, uncomment next line to ignore bower_components
