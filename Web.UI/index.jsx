@@ -16,12 +16,11 @@ function Home(props) {
       );
 };
 
-function Configuration(props) {
-    console.log("Configuration:");
+function Product(props) {
+    console.log("Product:");
     console.log(this);
     return (
         <div>
-          <h2>Configuration</h2>
           <FilterableProductTable products={PRODUCTS}/>
         </div>
       );
@@ -49,7 +48,7 @@ const App = React.createClass({
             <h1>Lighthouse</h1>
             <ul className="header">
                 <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
-                <li><Link to="/Configuration" activeClassName="active">Configuration</Link></li>
+                <li><Link to="/Product" activeClassName="active">Product</Link></li>
                 <li><Link to="/Result" activeClassName="active">Result</Link></li>
             </ul>
             <div className="content">
@@ -73,7 +72,7 @@ ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={App}>
         <IndexRoute component={Home} />
-        <Route path="configuration" component={Configuration} />
+        <Route path="Product" component={Product} />
         <Route path="result" component={Result} />
     </Route>
   </Router>,

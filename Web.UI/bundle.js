@@ -81,17 +81,12 @@
 	    );
 	};
 	
-	function Configuration(props) {
-	    console.log("Configuration:");
+	function Product(props) {
+	    console.log("Product:");
 	    console.log(this);
 	    return _react2.default.createElement(
 	        "div",
 	        null,
-	        _react2.default.createElement(
-	            "h2",
-	            null,
-	            "Configuration"
-	        ),
 	        _react2.default.createElement(_product2.default, { products: PRODUCTS })
 	    );
 	};
@@ -146,8 +141,8 @@
 	                    null,
 	                    _react2.default.createElement(
 	                        _reactRouter.Link,
-	                        { to: "/Configuration", activeClassName: "active" },
-	                        "Configuration"
+	                        { to: "/Product", activeClassName: "active" },
+	                        "Product"
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -178,7 +173,7 @@
 	        _reactRouter.Route,
 	        { path: "/", component: App },
 	        _react2.default.createElement(_reactRouter.IndexRoute, { component: Home }),
-	        _react2.default.createElement(_reactRouter.Route, { path: "configuration", component: Configuration }),
+	        _react2.default.createElement(_reactRouter.Route, { path: "Product", component: Product }),
 	        _react2.default.createElement(_reactRouter.Route, { path: "result", component: Result })
 	    )
 	), document.getElementById('container'));
@@ -26305,35 +26300,8 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	var ProductCategoryRow = function (_React$Component) {
-	  _inherits(ProductCategoryRow, _React$Component);
-	
-	  function ProductCategoryRow() {
-	    _classCallCheck(this, ProductCategoryRow);
-	
-	    return _possibleConstructorReturn(this, (ProductCategoryRow.__proto__ || Object.getPrototypeOf(ProductCategoryRow)).apply(this, arguments));
-	  }
-	
-	  _createClass(ProductCategoryRow, [{
-	    key: "render",
-	    value: function render() {
-	      return _react2.default.createElement(
-	        "tr",
-	        null,
-	        _react2.default.createElement(
-	          "th",
-	          { colSpan: "2" },
-	          this.props.category
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return ProductCategoryRow;
-	}(_react2.default.Component);
-	
-	var ProductRow = function (_React$Component2) {
-	  _inherits(ProductRow, _React$Component2);
+	var ProductRow = function (_React$Component) {
+	  _inherits(ProductRow, _React$Component);
 	
 	  function ProductRow() {
 	    _classCallCheck(this, ProductRow);
@@ -26344,18 +26312,13 @@
 	  _createClass(ProductRow, [{
 	    key: "render",
 	    value: function render() {
-	      var name = this.props.product.stocked ? this.props.product.name : _react2.default.createElement(
-	        "span",
-	        { style: { color: 'red' } },
-	        this.props.product.name
-	      );
 	      return _react2.default.createElement(
 	        "tr",
 	        null,
 	        _react2.default.createElement(
 	          "td",
 	          null,
-	          name
+	          this.props.product.name
 	        ),
 	        _react2.default.createElement(
 	          "td",
@@ -26369,8 +26332,8 @@
 	  return ProductRow;
 	}(_react2.default.Component);
 	
-	var ProductTable = function (_React$Component3) {
-	  _inherits(ProductTable, _React$Component3);
+	var ProductTable = function (_React$Component2) {
+	  _inherits(ProductTable, _React$Component2);
 	
 	  function ProductTable() {
 	    _classCallCheck(this, ProductTable);
@@ -26384,9 +26347,6 @@
 	      var rows = [];
 	      var lastCategory = null;
 	      this.props.products.forEach(function (product) {
-	        if (product.category !== lastCategory) {
-	          rows.push(_react2.default.createElement(ProductCategoryRow, { category: product.category, key: product.category }));
-	        }
 	        rows.push(_react2.default.createElement(ProductRow, { product: product, key: product.name }));
 	        lastCategory = product.category;
 	      });
@@ -26423,8 +26383,8 @@
 	  return ProductTable;
 	}(_react2.default.Component);
 	
-	var SearchBar = function (_React$Component4) {
-	  _inherits(SearchBar, _React$Component4);
+	var SearchBar = function (_React$Component3) {
+	  _inherits(SearchBar, _React$Component3);
 	
 	  function SearchBar() {
 	    _classCallCheck(this, SearchBar);
@@ -26438,14 +26398,7 @@
 	      return _react2.default.createElement(
 	        "form",
 	        null,
-	        _react2.default.createElement("input", { type: "text", placeholder: "Search..." }),
-	        _react2.default.createElement(
-	          "p",
-	          null,
-	          _react2.default.createElement("input", { type: "checkbox" }),
-	          ' ',
-	          "Only show products in stock"
-	        )
+	        _react2.default.createElement("input", { type: "text", placeholder: "Search..." })
 	      );
 	    }
 	  }]);
@@ -26453,8 +26406,8 @@
 	  return SearchBar;
 	}(_react2.default.Component);
 	
-	var FilterableProductTable = function (_React$Component5) {
-	  _inherits(FilterableProductTable, _React$Component5);
+	var FilterableProductTable = function (_React$Component4) {
+	  _inherits(FilterableProductTable, _React$Component4);
 	
 	  function FilterableProductTable() {
 	    _classCallCheck(this, FilterableProductTable);
@@ -26468,8 +26421,16 @@
 	      return _react2.default.createElement(
 	        "div",
 	        null,
-	        _react2.default.createElement(SearchBar, null),
-	        _react2.default.createElement(ProductTable, { products: this.props.products })
+	        _react2.default.createElement(
+	          "div",
+	          null,
+	          _react2.default.createElement(SearchBar, null)
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          null,
+	          _react2.default.createElement(ProductTable, { products: this.props.products })
+	        )
 	      );
 	    }
 	  }]);
