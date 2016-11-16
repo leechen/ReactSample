@@ -9,7 +9,7 @@ class SelectAction extends React.Component {
     }
 
     handleChange(event) {
-        alert('Your selection is: ' + event.target.value);
+        alert('Your want ' + event.target.value + ' on product ' + this.props.productId);
 
     }
 
@@ -18,8 +18,8 @@ class SelectAction extends React.Component {
           <form>
             <select value={this.state.value} onChange={this.handleChange}>
               <option value="select">Select</option>
-              <option value="start a scan">Start scan</option>
-              <option value="view scans">View scans</option>
+              <option value="buy">Buy</option>
+              <option value="view reviews">View reviews</option>
             </select>
           </form>
         );

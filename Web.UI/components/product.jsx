@@ -5,9 +5,10 @@ class ProductRow extends React.Component {
   render() {
     return (
       <tr>
+        <td>{this.props.product.id}</td>
         <td>{this.props.product.name}</td>
         <td>{this.props.product.price}</td>
-        <td><SelectAction/></td>
+        <td><SelectAction productId={this.props.product.id}/></td>
       </tr>
     );
   }
@@ -20,12 +21,13 @@ class ProductTable extends React.Component {
       if (product.name.indexOf(this.props.filterText) === -1) {
         return;
       }
-      rows.push(<ProductRow product={product} key={product.name} />);
+      rows.push(<ProductRow product={product} key={product.id} />);
     });
     return (
       <table>
         <thead>
           <tr>
+            <th>Id</th>
             <th>Name</th>
             <th>Price</th>
           </tr>

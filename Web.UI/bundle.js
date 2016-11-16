@@ -164,7 +164,7 @@
 	    }
 	});
 	
-	var PRODUCTS = [{ category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football' }, { category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball' }, { category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball' }, { category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch' }, { category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5' }, { category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7' }];
+	var PRODUCTS = [{ id: '1', price: '$49.99', stocked: true, name: 'Football' }, { id: '2', price: '$9.99', stocked: true, name: 'Baseball' }, { id: '3', price: '$29.99', stocked: false, name: 'Basketball' }, { id: '4', price: '$99.99', stocked: true, name: 'iPod Touch' }, { id: '5', price: '$399.99', stocked: false, name: 'iPhone 5' }, { id: '6', price: '$199.99', stocked: true, name: 'Nexus 7' }];
 	
 	_reactDom2.default.render(_react2.default.createElement(
 	    _reactRouter.Router,
@@ -26322,6 +26322,11 @@
 	        _react2.default.createElement(
 	          "td",
 	          null,
+	          this.props.product.id
+	        ),
+	        _react2.default.createElement(
+	          "td",
+	          null,
 	          this.props.product.name
 	        ),
 	        _react2.default.createElement(
@@ -26332,7 +26337,7 @@
 	        _react2.default.createElement(
 	          "td",
 	          null,
-	          _react2.default.createElement(_action2.default, null)
+	          _react2.default.createElement(_action2.default, { productId: this.props.product.id })
 	        )
 	      );
 	    }
@@ -26360,7 +26365,7 @@
 	        if (product.name.indexOf(_this3.props.filterText) === -1) {
 	          return;
 	        }
-	        rows.push(_react2.default.createElement(ProductRow, { product: product, key: product.name }));
+	        rows.push(_react2.default.createElement(ProductRow, { product: product, key: product.id }));
 	      });
 	      return _react2.default.createElement(
 	        "table",
@@ -26371,6 +26376,11 @@
 	          _react2.default.createElement(
 	            "tr",
 	            null,
+	            _react2.default.createElement(
+	              "th",
+	              null,
+	              "Id"
+	            ),
 	            _react2.default.createElement(
 	              "th",
 	              null,
@@ -26518,7 +26528,7 @@
 	    _createClass(SelectAction, [{
 	        key: 'handleChange',
 	        value: function handleChange(event) {
-	            alert('Your selection is: ' + event.target.value);
+	            alert('Your want ' + event.target.value + ' on product ' + this.props.productId);
 	        }
 	    }, {
 	        key: 'render',
@@ -26536,13 +26546,13 @@
 	                    ),
 	                    _react2.default.createElement(
 	                        'option',
-	                        { value: 'start a scan' },
-	                        'Start scan'
+	                        { value: 'buy' },
+	                        'Buy'
 	                    ),
 	                    _react2.default.createElement(
 	                        'option',
-	                        { value: 'view scans' },
-	                        'View scans'
+	                        { value: 'view reviews' },
+	                        'View reviews'
 	                    )
 	                )
 	            );
