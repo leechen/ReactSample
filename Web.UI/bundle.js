@@ -26389,19 +26389,32 @@
 	var SearchBar = function (_React$Component3) {
 	  _inherits(SearchBar, _React$Component3);
 	
-	  function SearchBar() {
+	  function SearchBar(props) {
 	    _classCallCheck(this, SearchBar);
 	
-	    return _possibleConstructorReturn(this, (SearchBar.__proto__ || Object.getPrototypeOf(SearchBar)).apply(this, arguments));
+	    var _this4 = _possibleConstructorReturn(this, (SearchBar.__proto__ || Object.getPrototypeOf(SearchBar)).call(this, props));
+	
+	    _this4.handleChange = _this4.handleChange.bind(_this4);
+	    return _this4;
 	  }
 	
 	  _createClass(SearchBar, [{
+	    key: "handleChange",
+	    value: function handleChange() {
+	      this.props.onUserInput(this.refs.filterTextInput.value);
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
 	        "form",
 	        null,
-	        _react2.default.createElement("input", { type: "text", placeholder: "Search...", value: this.props.filterText })
+	        _react2.default.createElement("input", {
+	          type: "text",
+	          placeholder: "Search...",
+	          value: this.props.filterText,
+	          ref: "filterTextInput",
+	          onChange: this.handleChange })
 	      );
 	    }
 	  }]);
@@ -26420,17 +26433,27 @@
 	    _this5.state = {
 	      filterText: 'ball'
 	    };
+	
+	    _this5.handleUserInput = _this5.handleUserInput.bind(_this5);
 	    return _this5;
 	  }
 	
 	  _createClass(FilterableProductTable, [{
+	    key: "handleUserInput",
+	    value: function handleUserInput(filterText) {
+	      this.setState({
+	        filterText: filterText
+	      });
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
 	        "div",
 	        null,
 	        _react2.default.createElement(SearchBar, {
-	          filterText: this.state.filterText
+	          filterText: this.state.filterText,
+	          onUserInput: this.handleUserInput
 	        }),
 	        _react2.default.createElement(ProductTable, {
 	          filterText: this.state.filterText,
