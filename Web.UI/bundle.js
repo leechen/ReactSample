@@ -56,6 +56,10 @@
 	
 	var _reactRouter = __webpack_require__(172);
 	
+	var _product = __webpack_require__(228);
+	
+	var _product2 = _interopRequireDefault(_product);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function Home(props) {
@@ -88,11 +92,7 @@
 	            null,
 	            "Configuration"
 	        ),
-	        _react2.default.createElement(
-	            "p",
-	            null,
-	            "Configuration stuff."
-	        )
+	        _react2.default.createElement(_product2.default, { products: PRODUCTS })
 	    );
 	};
 	
@@ -168,6 +168,8 @@
 	        );
 	    }
 	});
+	
+	var PRODUCTS = [{ category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football' }, { category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball' }, { category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball' }, { category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch' }, { category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5' }, { category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7' }];
 	
 	_reactDom2.default.render(_react2.default.createElement(
 	    _reactRouter.Router,
@@ -26278,6 +26280,204 @@
 	  });
 	};
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 228 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var ProductCategoryRow = function (_React$Component) {
+	  _inherits(ProductCategoryRow, _React$Component);
+	
+	  function ProductCategoryRow() {
+	    _classCallCheck(this, ProductCategoryRow);
+	
+	    return _possibleConstructorReturn(this, (ProductCategoryRow.__proto__ || Object.getPrototypeOf(ProductCategoryRow)).apply(this, arguments));
+	  }
+	
+	  _createClass(ProductCategoryRow, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "tr",
+	        null,
+	        _react2.default.createElement(
+	          "th",
+	          { colSpan: "2" },
+	          this.props.category
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return ProductCategoryRow;
+	}(_react2.default.Component);
+	
+	var ProductRow = function (_React$Component2) {
+	  _inherits(ProductRow, _React$Component2);
+	
+	  function ProductRow() {
+	    _classCallCheck(this, ProductRow);
+	
+	    return _possibleConstructorReturn(this, (ProductRow.__proto__ || Object.getPrototypeOf(ProductRow)).apply(this, arguments));
+	  }
+	
+	  _createClass(ProductRow, [{
+	    key: "render",
+	    value: function render() {
+	      var name = this.props.product.stocked ? this.props.product.name : _react2.default.createElement(
+	        "span",
+	        { style: { color: 'red' } },
+	        this.props.product.name
+	      );
+	      return _react2.default.createElement(
+	        "tr",
+	        null,
+	        _react2.default.createElement(
+	          "td",
+	          null,
+	          name
+	        ),
+	        _react2.default.createElement(
+	          "td",
+	          null,
+	          this.props.product.price
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return ProductRow;
+	}(_react2.default.Component);
+	
+	var ProductTable = function (_React$Component3) {
+	  _inherits(ProductTable, _React$Component3);
+	
+	  function ProductTable() {
+	    _classCallCheck(this, ProductTable);
+	
+	    return _possibleConstructorReturn(this, (ProductTable.__proto__ || Object.getPrototypeOf(ProductTable)).apply(this, arguments));
+	  }
+	
+	  _createClass(ProductTable, [{
+	    key: "render",
+	    value: function render() {
+	      var rows = [];
+	      var lastCategory = null;
+	      this.props.products.forEach(function (product) {
+	        if (product.category !== lastCategory) {
+	          rows.push(_react2.default.createElement(ProductCategoryRow, { category: product.category, key: product.category }));
+	        }
+	        rows.push(_react2.default.createElement(ProductRow, { product: product, key: product.name }));
+	        lastCategory = product.category;
+	      });
+	      return _react2.default.createElement(
+	        "table",
+	        null,
+	        _react2.default.createElement(
+	          "thead",
+	          null,
+	          _react2.default.createElement(
+	            "tr",
+	            null,
+	            _react2.default.createElement(
+	              "th",
+	              null,
+	              "Name"
+	            ),
+	            _react2.default.createElement(
+	              "th",
+	              null,
+	              "Price"
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          "tbody",
+	          null,
+	          rows
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return ProductTable;
+	}(_react2.default.Component);
+	
+	var SearchBar = function (_React$Component4) {
+	  _inherits(SearchBar, _React$Component4);
+	
+	  function SearchBar() {
+	    _classCallCheck(this, SearchBar);
+	
+	    return _possibleConstructorReturn(this, (SearchBar.__proto__ || Object.getPrototypeOf(SearchBar)).apply(this, arguments));
+	  }
+	
+	  _createClass(SearchBar, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "form",
+	        null,
+	        _react2.default.createElement("input", { type: "text", placeholder: "Search..." }),
+	        _react2.default.createElement(
+	          "p",
+	          null,
+	          _react2.default.createElement("input", { type: "checkbox" }),
+	          ' ',
+	          "Only show products in stock"
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return SearchBar;
+	}(_react2.default.Component);
+	
+	var FilterableProductTable = function (_React$Component5) {
+	  _inherits(FilterableProductTable, _React$Component5);
+	
+	  function FilterableProductTable() {
+	    _classCallCheck(this, FilterableProductTable);
+	
+	    return _possibleConstructorReturn(this, (FilterableProductTable.__proto__ || Object.getPrototypeOf(FilterableProductTable)).apply(this, arguments));
+	  }
+	
+	  _createClass(FilterableProductTable, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        null,
+	        _react2.default.createElement(SearchBar, null),
+	        _react2.default.createElement(ProductTable, { products: this.props.products })
+	      );
+	    }
+	  }]);
+	
+	  return FilterableProductTable;
+	}(_react2.default.Component);
+	
+	exports.default = FilterableProductTable;
 
 /***/ }
 /******/ ]);
