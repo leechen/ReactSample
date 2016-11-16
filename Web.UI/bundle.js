@@ -26344,9 +26344,11 @@
 	  _createClass(ProductTable, [{
 	    key: "render",
 	    value: function render() {
+	      var _this3 = this;
+	
 	      var rows = [];
 	      this.props.products.forEach(function (product) {
-	        if (product.name.indexOf(this.props.filterText) === -1) {
+	        if (product.name.indexOf(_this3.props.filterText) === -1) {
 	          return;
 	        }
 	        rows.push(_react2.default.createElement(ProductRow, { product: product, key: product.name }));
@@ -26413,12 +26415,12 @@
 	  function FilterableProductTable(props) {
 	    _classCallCheck(this, FilterableProductTable);
 	
-	    var _this4 = _possibleConstructorReturn(this, (FilterableProductTable.__proto__ || Object.getPrototypeOf(FilterableProductTable)).call(this, props));
+	    var _this5 = _possibleConstructorReturn(this, (FilterableProductTable.__proto__ || Object.getPrototypeOf(FilterableProductTable)).call(this, props));
 	
-	    _this4.state = {
-	      filterText: ''
+	    _this5.state = {
+	      filterText: 'ball'
 	    };
-	    return _this4;
+	    return _this5;
 	  }
 	
 	  _createClass(FilterableProductTable, [{
