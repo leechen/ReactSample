@@ -14,10 +14,11 @@ class ProductRow extends React.Component {
 class ProductTable extends React.Component {
   render() {
     var rows = [];
-    var lastCategory = null;
-    this.props.products.forEach(function(product) {
+    this.props.products.forEach((product) => {
+      if (product.name.indexOf(this.props.filterText) === -1) {
+        return;
+      }
       rows.push(<ProductRow product={product} key={product.name} />);
-      lastCategory = product.category;
     });
     return (
       <table>
@@ -37,18 +38,30 @@ class SearchBar extends React.Component {
   render() {
     return (
       <form>
-        <input type="text" placeholder="Search..." />
+        <input type="text" placeholder="Search..." value={this.props.filterText} />
       </form>
     );
   }
 }
 
 class FilterableProductTable extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filterText: ''
+    };
+  }
+
   render() {
     return (
       <div>
-        <div><SearchBar /></div>         
-        <div><ProductTable products={this.props.products} /></div>
+        <SearchBar 
+            filterText={this.state.filterText} 
+        />
+        <ProductTable 
+            filterText={this.state.filterText} 
+            products={this.props.products} 
+        />
       </div>
     );
   }

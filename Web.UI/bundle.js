@@ -26345,10 +26345,11 @@
 	    key: "render",
 	    value: function render() {
 	      var rows = [];
-	      var lastCategory = null;
 	      this.props.products.forEach(function (product) {
+	        if (product.name.indexOf(this.props.filterText) === -1) {
+	          return;
+	        }
 	        rows.push(_react2.default.createElement(ProductRow, { product: product, key: product.name }));
-	        lastCategory = product.category;
 	      });
 	      return _react2.default.createElement(
 	        "table",
@@ -26398,7 +26399,7 @@
 	      return _react2.default.createElement(
 	        "form",
 	        null,
-	        _react2.default.createElement("input", { type: "text", placeholder: "Search..." })
+	        _react2.default.createElement("input", { type: "text", placeholder: "Search...", value: this.props.filterText })
 	      );
 	    }
 	  }]);
@@ -26409,10 +26410,15 @@
 	var FilterableProductTable = function (_React$Component4) {
 	  _inherits(FilterableProductTable, _React$Component4);
 	
-	  function FilterableProductTable() {
+	  function FilterableProductTable(props) {
 	    _classCallCheck(this, FilterableProductTable);
 	
-	    return _possibleConstructorReturn(this, (FilterableProductTable.__proto__ || Object.getPrototypeOf(FilterableProductTable)).apply(this, arguments));
+	    var _this4 = _possibleConstructorReturn(this, (FilterableProductTable.__proto__ || Object.getPrototypeOf(FilterableProductTable)).call(this, props));
+	
+	    _this4.state = {
+	      filterText: ''
+	    };
+	    return _this4;
 	  }
 	
 	  _createClass(FilterableProductTable, [{
@@ -26421,16 +26427,13 @@
 	      return _react2.default.createElement(
 	        "div",
 	        null,
-	        _react2.default.createElement(
-	          "div",
-	          null,
-	          _react2.default.createElement(SearchBar, null)
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          null,
-	          _react2.default.createElement(ProductTable, { products: this.props.products })
-	        )
+	        _react2.default.createElement(SearchBar, {
+	          filterText: this.state.filterText
+	        }),
+	        _react2.default.createElement(ProductTable, {
+	          filterText: this.state.filterText,
+	          products: this.props.products
+	        })
 	      );
 	    }
 	  }]);
