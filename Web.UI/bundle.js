@@ -26292,6 +26292,10 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _action = __webpack_require__(229);
+	
+	var _action2 = _interopRequireDefault(_action);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26324,6 +26328,11 @@
 	          "td",
 	          null,
 	          this.props.product.price
+	        ),
+	        _react2.default.createElement(
+	          "td",
+	          null,
+	          _react2.default.createElement(_action2.default, null)
 	        )
 	      );
 	    }
@@ -26431,7 +26440,7 @@
 	    var _this5 = _possibleConstructorReturn(this, (FilterableProductTable.__proto__ || Object.getPrototypeOf(FilterableProductTable)).call(this, props));
 	
 	    _this5.state = {
-	      filterText: 'ball'
+	      filterText: ''
 	    };
 	
 	    _this5.handleUserInput = _this5.handleUserInput.bind(_this5);
@@ -26467,6 +26476,83 @@
 	}(_react2.default.Component);
 	
 	exports.default = FilterableProductTable;
+
+/***/ },
+/* 229 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var SelectAction = function (_React$Component) {
+	    _inherits(SelectAction, _React$Component);
+	
+	    function SelectAction(props) {
+	        _classCallCheck(this, SelectAction);
+	
+	        var _this = _possibleConstructorReturn(this, (SelectAction.__proto__ || Object.getPrototypeOf(SelectAction)).call(this, props));
+	
+	        _this.state = { value: 'select' };
+	
+	        _this.handleChange = _this.handleChange.bind(_this);
+	        return _this;
+	    }
+	
+	    _createClass(SelectAction, [{
+	        key: 'handleChange',
+	        value: function handleChange(event) {
+	            alert('Your selection is: ' + event.target.value);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'form',
+	                null,
+	                _react2.default.createElement(
+	                    'select',
+	                    { value: this.state.value, onChange: this.handleChange },
+	                    _react2.default.createElement(
+	                        'option',
+	                        { value: 'select' },
+	                        'Select'
+	                    ),
+	                    _react2.default.createElement(
+	                        'option',
+	                        { value: 'start a scan' },
+	                        'Start scan'
+	                    ),
+	                    _react2.default.createElement(
+	                        'option',
+	                        { value: 'view scans' },
+	                        'View scans'
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return SelectAction;
+	}(_react2.default.Component);
+	
+	exports.default = SelectAction;
 
 /***/ }
 /******/ ]);

@@ -1,4 +1,5 @@
 ﻿import React from "react";
+import SelectAction from "./action.jsx";
 
 class ProductRow extends React.Component {
   render() {
@@ -6,6 +7,7 @@ class ProductRow extends React.Component {
       <tr>
         <td>{this.props.product.name}</td>
         <td>{this.props.product.price}</td>
+        <td><SelectAction/></td>
       </tr>
     );
   }

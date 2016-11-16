@@ -98,6 +98,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="components\action.jsx" />
     <None Include="components\product.jsx" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
