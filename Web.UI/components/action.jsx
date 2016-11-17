@@ -1,4 +1,5 @@
 ﻿import React from "react";
+import axios from 'axios';
 
 class SelectAction extends React.Component {
     constructor(props) {
@@ -9,8 +10,20 @@ class SelectAction extends React.Component {
     }
 
     handleChange(event) {
-        alert('Your want ' + event.target.value + ' on product ' + this.props.productId);
-
+        try {
+            fetch('http://localhost:9021/api/services', {
+                method: 'post',
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                }),
+                body: JSON.stringify({
+                    description: "test 12"
+                })
+            });
+        } catch (err) {
+            console.error(err);
+            this.dispatch({ok: false, error: err.data});
+        }
     }
 
     render() {
@@ -19,7 +32,6 @@ class SelectAction extends React.Component {
             <select value={this.state.value} onChange={this.handleChange}>
               <option value="select">Select</option>
               <option value="buy">Buy</option>
-              <option value="view reviews">View reviews</option>
             </select>
           </form>
         );
