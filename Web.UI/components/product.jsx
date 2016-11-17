@@ -30,6 +30,7 @@ class ProductTable extends React.Component {
             <th>Id</th>
             <th>Name</th>
             <th>Price</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>{rows}</tbody>
@@ -68,11 +69,24 @@ class FilterableProductTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      filterText: ''
+        filterText: '',
+        products: []
     };
 
     this.handleUserInput = this.handleUserInput.bind(this);
   }
+    componentDidMount() {
+        fetch('http://localhost:9021/api/products', {
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            })
+        })
+        .then(response=> response.json())
+        .then(json => {
+            console.log(json);
+            this.setState({products: json})
+        });
+    }
 
   handleUserInput(filterText) {
     this.setState({
@@ -89,7 +103,7 @@ class FilterableProductTable extends React.Component {
         />
         <ProductTable 
             filterText={this.state.filterText} 
-            products={this.props.products} 
+            products={this.state.products} 
         />
       </div>
     );

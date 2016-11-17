@@ -82,12 +82,10 @@
 	};
 	
 	function Product(props) {
-	    console.log("Product:");
-	    console.log(this);
 	    return _react2.default.createElement(
 	        "div",
 	        null,
-	        _react2.default.createElement(_product2.default, { products: PRODUCTS })
+	        _react2.default.createElement(_product2.default, null)
 	    );
 	};
 	
@@ -112,6 +110,7 @@
 	
 	var App = _react2.default.createClass({
 	    displayName: "App",
+	
 	
 	    render: function render() {
 	        console.log("App:");
@@ -163,8 +162,6 @@
 	        );
 	    }
 	});
-	
-	var PRODUCTS = [{ id: '1', price: '$49.99', stocked: true, name: 'Football' }, { id: '2', price: '$9.99', stocked: true, name: 'Baseball' }, { id: '3', price: '$29.99', stocked: false, name: 'Basketball' }, { id: '4', price: '$99.99', stocked: true, name: 'iPod Touch' }, { id: '5', price: '$399.99', stocked: false, name: 'iPhone 5' }, { id: '6', price: '$199.99', stocked: true, name: 'Nexus 7' }];
 	
 	_reactDom2.default.render(_react2.default.createElement(
 	    _reactRouter.Router,
@@ -26390,6 +26387,11 @@
 	              "th",
 	              null,
 	              "Price"
+	            ),
+	            _react2.default.createElement(
+	              "th",
+	              null,
+	              "Action"
 	            )
 	          )
 	        ),
@@ -26450,7 +26452,8 @@
 	    var _this5 = _possibleConstructorReturn(this, (FilterableProductTable.__proto__ || Object.getPrototypeOf(FilterableProductTable)).call(this, props));
 	
 	    _this5.state = {
-	      filterText: ''
+	      filterText: '',
+	      products: []
 	    };
 	
 	    _this5.handleUserInput = _this5.handleUserInput.bind(_this5);
@@ -26458,6 +26461,22 @@
 	  }
 	
 	  _createClass(FilterableProductTable, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      var _this6 = this;
+	
+	      fetch('http://localhost:9021/api/products', {
+	        headers: new Headers({
+	          'Content-Type': 'application/json'
+	        })
+	      }).then(function (response) {
+	        return response.json();
+	      }).then(function (json) {
+	        console.log(json);
+	        _this6.setState({ products: json });
+	      });
+	    }
+	  }, {
 	    key: "handleUserInput",
 	    value: function handleUserInput(filterText) {
 	      this.setState({
@@ -26476,7 +26495,7 @@
 	        }),
 	        _react2.default.createElement(ProductTable, {
 	          filterText: this.state.filterText,
-	          products: this.props.products
+	          products: this.state.products
 	        })
 	      );
 	    }
