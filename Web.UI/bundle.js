@@ -26551,20 +26551,21 @@
 	    _createClass(SelectAction, [{
 	        key: 'handleChange',
 	        value: function handleChange(event) {
-	            try {
-	                fetch('http://localhost:9021/api/services', {
-	                    method: 'post',
-	                    headers: new Headers({
-	                        'Content-Type': 'application/json'
-	                    }),
-	                    body: JSON.stringify({
-	                        description: "test 12"
-	                    })
-	                });
-	            } catch (err) {
-	                console.error(err);
-	                this.dispatch({ ok: false, error: err.data });
-	            }
+	            fetch('http://localhost:9021/api/scan-configurations/' + this.props.productId + '/scans', {
+	                method: 'post',
+	                headers: new Headers({
+	                    'Content-Type': 'application/json'
+	                }),
+	                body: JSON.stringify({
+	                    description: "test 12",
+	                    name: "test from sample app"
+	                })
+	            }).then(function (response) {
+	                return response.json();
+	            }).then(function (json) {
+	                console.log(json);
+	                alert('A scan with id ${json.id} is created');
+	            });
 	        }
 	    }, {
 	        key: 'render',
