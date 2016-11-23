@@ -16,7 +16,7 @@ function Home(props) {
       );
 };
 
-function Product(props) {
+function Products(props) {
     return (
         <div>
           <FilterableProductTable/>
@@ -24,7 +24,7 @@ function Product(props) {
       );
 };
 
-function Result(props) {
+function Results(props) {
     console.log("Result:");
     console.log(this);
     return (
@@ -47,8 +47,8 @@ const App = React.createClass({
             <h1>Lighthouse</h1>
             <ul className="header">
                 <li><IndexLink to="/" activeClassName="active">Home</IndexLink></li>
-                <li><Link to="/Product" activeClassName="active">Product</Link></li>
-                <li><Link to="/Result" activeClassName="active">Result</Link></li>
+                <li><Link to="/Products" activeClassName="active">Products</Link></li>
+                <li><Link to="/Results" activeClassName="active">Results</Link></li>
             </ul>
             <div className="content">
                 {this.props.children}
@@ -62,8 +62,8 @@ ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={App}>
         <IndexRoute component={Home} />
-        <Route path="Product" component={Product} />
-        <Route path="result" component={Result} />
+        <Route path="products" component={Products} />
+        <Route path="results" component={Results} />
     </Route>
   </Router>,
   document.getElementById('container')

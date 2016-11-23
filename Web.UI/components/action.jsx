@@ -28,7 +28,7 @@ class SelectAction extends React.Component {
             });
         }
         else if (event.target.value === 'result') {
-            const path = '/result';
+            const path = '/results';
             this.props.router.push(path);
         }
     }

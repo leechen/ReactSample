@@ -81,7 +81,7 @@
 	    );
 	};
 	
-	function Product(props) {
+	function Products(props) {
 	    return _react2.default.createElement(
 	        "div",
 	        null,
@@ -89,7 +89,7 @@
 	    );
 	};
 	
-	function Result(props) {
+	function Results(props) {
 	    console.log("Result:");
 	    console.log(this);
 	    return _react2.default.createElement(
@@ -140,8 +140,8 @@
 	                    null,
 	                    _react2.default.createElement(
 	                        _reactRouter.Link,
-	                        { to: "/Product", activeClassName: "active" },
-	                        "Product"
+	                        { to: "/Products", activeClassName: "active" },
+	                        "Products"
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -149,8 +149,8 @@
 	                    null,
 	                    _react2.default.createElement(
 	                        _reactRouter.Link,
-	                        { to: "/Result", activeClassName: "active" },
-	                        "Result"
+	                        { to: "/Results", activeClassName: "active" },
+	                        "Results"
 	                    )
 	                )
 	            ),
@@ -170,8 +170,8 @@
 	        _reactRouter.Route,
 	        { path: "/", component: App },
 	        _react2.default.createElement(_reactRouter.IndexRoute, { component: Home }),
-	        _react2.default.createElement(_reactRouter.Route, { path: "Product", component: Product }),
-	        _react2.default.createElement(_reactRouter.Route, { path: "result", component: Result })
+	        _react2.default.createElement(_reactRouter.Route, { path: "products", component: Products }),
+	        _react2.default.createElement(_reactRouter.Route, { path: "results", component: Results })
 	    )
 	), document.getElementById('container'));
 
@@ -26566,7 +26566,7 @@
 	                    alert('A scan with id ${json.id} is created');
 	                });
 	            } else if (event.target.value === 'result') {
-	                var path = '/result';
+	                var path = '/results';
 	                this.props.router.push(path);
 	            }
 	        }
